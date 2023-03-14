@@ -1,6 +1,5 @@
 import { connect } from "../database/connection.db.js";
 import saleRepo from "../repositories/sale.repo.js";
-// import clientRepo from "../repositories/client.repo.js";
 import productRepo from "../repositories/product.repo.js";
 
 async function createSale(sale) {
@@ -50,7 +49,6 @@ async function deleteSale(id) {
     const sale = await saleRepo.getSaleById(id);
     const product = await productRepo.getProductById(sale.product_id);
 
-    // !
     if (product.stock > 0) {
       await saleRepo.deleteSale(id);
       product.stock++;
@@ -76,10 +74,6 @@ async function deleteSale(id) {
 async function updateSale(sale) {
   return saleRepo.updateSale(sale);
 }
-
-// function error(e) {
-//   throw new Error(`The ${e} reported does not exist.`);
-// }
 
 export default {
   createSale,
