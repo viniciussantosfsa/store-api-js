@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import cors from "cors";
 import clientRoute from "./routes/client.route.js";
@@ -14,7 +17,7 @@ app.use("/supplier", supplierRoute);
 app.use("/product", productRoute);
 app.use("/sale", saleRoute);
 
-const port = 2100;
+const port = process.env.PORT;
 
 app.listen(port, () => {
   console.log(`Servidor aberto na porta: ${port}`);
